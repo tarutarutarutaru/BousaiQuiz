@@ -21,14 +21,16 @@ function setAnsList(ansList) {
             ansIndex = i;
         }
 
-        if (i%2 == 0){
+        //　横並びレイアウトを挿入
+        if (i%2 == 0) {
             $(".ans-holder").append(
                 "<div class='row ans-row-" + ansRow + "'>" +
                 "</div>"
             );
         }
 
-        $(".row ans-row-" + ansRow).append(
+        //　選択肢を挿入
+        $(".ans-row-" + ansRow).append(
             "<div class='col-md-6'>" +
             "<div class='checkbox ans-0'>" +
             "<label>" +

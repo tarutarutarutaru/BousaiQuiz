@@ -1,20 +1,35 @@
 var quizList;
 
+var quizIndex = 0;
 // 現在表示している問題の正解の番号
 var ansIndex = -1;
 
 $(function () {
     var getQuizDataHandler = function(data) {
         quizList = data.quizList;
-        setQuizData(0);
+        setQuizData(quizIndex);
+
+        $(".btn-next").on("click", function() {
+            // TODO チェックボックスの判定
+            quizIndex++;
+
+            if (!setQuizData(quizIndex)) {
+                alert("全問正解！");
+            }
+        });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getQuizDataHandler, "json");
 });
 
 function setQuizData(index) {
+    if (index > quizList.length-1) {
+        return false;
+    }
+
     var quizData = quizList[index];
     setQuizInfo(index, quizData.desc);
     setAnsList(quizData.ansList);
+    return true;
 }
 
 function setQuizInfo(index, desc) {

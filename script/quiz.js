@@ -14,11 +14,11 @@ $(function () {
         $(".btn-next").on("click", function() {
             // TODO チェックボックスの判定
             quizIndex++;
-            
 
             if (!setQuizData(quizIndex)) {
                 alert("全問正解！");
             }
+
         });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getQuizDataHandler, "json");
@@ -85,4 +85,8 @@ function setAnsList(ansList) {
             "</div>"
         );
     }
+
+$(".btn-next").on("click", function() {
+    location.href = "./../page/answer.html";
+});
 }

@@ -14,6 +14,7 @@ $(function () {
         $(".btn-next").on("click", function() {
             // TODO チェックボックスの判定
             quizIndex++;
+            
 
             if (!setQuizData(quizIndex)) {
                 alert("全問正解！");

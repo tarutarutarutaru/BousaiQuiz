@@ -7,19 +7,24 @@ var quizIndex = 0;
 var ansIndex = -1;
 
 $(function () {
+    // HTTP GET Parameter 取得
+    var arg = new Object;
+    var pair=location.search.substring(1).split('&');
+    for(var i=0;pair[i];i++) {
+        var kv = pair[i].split('=');
+        arg[kv[0]]=kv[1];
+    }
+    
+    // 表示したい問題番号
+    var index = parseInt(arg["index"], 10);
+
     var getQuizDataHandler = function(data) {
         quizList = data.quizList;
-        setQuizData(quizIndex);
+        setQuizData(index);
 
         $(".btn-next").on("click", function() {
             // TODO チェックボックスの判定
-            quizIndex++;
-
-            if (!setQuizData(quizIndex)) {
-                alert("全問正解！");
-            }
-            location.href = "./../page/answer.html";
-
+            parent.window.nextButton();
         });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getQuizDataHandler, "json");

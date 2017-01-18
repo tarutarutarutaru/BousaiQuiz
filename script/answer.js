@@ -1,7 +1,5 @@
 $(function () {
-    console.log("test2");
-    $(".btn-next2").on("click", function() {
-        console.log("test");
+    $(".btn-nextQuiz").on("click", function() {
         location.href = "./../page/quiz.html";
     });
 });

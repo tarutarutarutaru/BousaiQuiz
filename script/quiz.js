@@ -18,6 +18,7 @@ $(function () {
             if (!setQuizData(quizIndex)) {
                 alert("全問正解！");
             }
+            location.href = "./../page/answer.html";
 
         });
     };
@@ -87,6 +88,6 @@ function setAnsList(ansList) {
     }
 
 $(".btn-next").on("click", function() {
-    location.href = "./../page/answer.html";
+    
 });
 }

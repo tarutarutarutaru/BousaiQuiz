@@ -1,4 +1,5 @@
 $(function() {
+    console.log("test");
     $("#iframe-quiz").attr("src", "./../page/quiz.html?index=" + "3");
 });
 

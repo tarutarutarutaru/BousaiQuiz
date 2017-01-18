@@ -13,21 +13,17 @@ $(function () {
     for(var i=0;pair[i];i++) {
         var kv = pair[i].split('=');
         arg[kv[0]]=kv[1];
-        console.log("test");
     }
     
     // 表示したい問題番号
     var index = parseInt(arg["index"], 10);
-    console.log(arg["index"]);
 
     var getQuizDataHandler = function(data) {
         quizList = data.quizList;
-        console.log(index);
         setQuizData(index);
 
         $(".btn-next").on("click", function() {
             // TODO チェックボックスの判定
-            console.log(parent.whidow);
             parent.window.nextButton();
         });
     };
@@ -40,18 +36,21 @@ $(function () {
  * @return {bool} 問題をセットできたか
  */
 function setQuizData(index) {
-    console.log(index);
     if (index > quizList.length-1) {
         return false;
     }
 
     var quizData = quizList[index];
-    console.log(quizData);
     setQuizInfo(index, quizData.desc);
     setAnsList(quizData.ansList);
     return true;
 }
 
+/**
+ * 問題の番号とタイトルを設定
+ * @param {number} index - 問題番号 0 init
+ * @param {string} desc - 問題説明
+ */
 function setQuizInfo(index, desc) {
     $(".quiz-title").html("Q" + (index+1));
     $(".quiz-desc").html(desc);

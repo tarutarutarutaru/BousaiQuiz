@@ -10,8 +10,7 @@ $(function () {
     // HTTP GET Parameter 取得
     var arg = new Object;
     var pair=location.search.substring(1).split('&');
-    console.log(pair);
-    for(var i=0;i < 8;i++){//pair[i];i++) {
+    for(var i=0;pair[i];i++) {
         var kv = pair[i].split('=');
         arg[kv[0]]=kv[1];
         console.log("test");
@@ -19,14 +18,17 @@ $(function () {
     
     // 表示したい問題番号
     var index = parseInt(arg["index"], 10);
+    index=2;
     console.log(arg["index"]);
 
     var getQuizDataHandler = function(data) {
         quizList = data.quizList;
+        console.log(index);
         setQuizData(index);
 
         $(".btn-next").on("click", function() {
             // TODO チェックボックスの判定
+            console.log(parent.whidow);
             parent.window.nextButton();
         });
     };
@@ -45,6 +47,7 @@ function setQuizData(index) {
     }
 
     var quizData = quizList[index];
+    console.log(quizData);
     setQuizInfo(index, quizData.desc);
     setAnsList(quizData.ansList);
     return true;

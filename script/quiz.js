@@ -18,7 +18,6 @@ $(function () {
     
     // 表示したい問題番号
     var index = parseInt(arg["index"], 10);
-    index=2;
     console.log(arg["index"]);
 
     var getQuizDataHandler = function(data) {

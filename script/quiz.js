@@ -8,7 +8,7 @@ var ansIndex = -1;
 
 $(function () {
     // HTTP GET Parameter 取得
-    var arg = new Object;
+   var arg = new Object;
     var pair=location.search.substring(1).split('&');
     for(var i=0;pair[i];i++) {
         var kv = pair[i].split('=');

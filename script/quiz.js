@@ -24,8 +24,7 @@ $(function () {
 
         $(".btn-next").on("click", function() {
             // TODO チェックボックスの判定
-        location.href = "./../page/quiz.html?index="+(index+1);
-            //parent.window.nextButton();
+            window.parent.nextButton();
         });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getQuizDataHandler, "json");

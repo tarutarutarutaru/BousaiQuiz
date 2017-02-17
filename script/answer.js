@@ -1,9 +1,7 @@
 // クイズデータリスト
 var answerList;
-console.log("lajfd");
 
 $(function () {
-    console.log("lksafas");
     // HTTP GET Parameter 取得
    var arg = new Object;
     var pair=location.search.substring(1).split('&');
@@ -36,10 +34,10 @@ function setAnswerData(index) {
 
     var answerData = answerList[index];
     console.log(answerData.desc);
-    setAnswerInfo(index, answerData.desc);
+    setAnswerInfo(answerData.desc);
     return true;
 }
-function setAnswerInfo(index, desc) {
+function setAnswerInfo(desc) {
     console.log("test");
     $(".answer-desc").html(desc);
 }

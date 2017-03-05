@@ -1,6 +1,8 @@
 // クイズデータリスト
 var answerDesc;
+//正しい答え
 var correctAnswer;
+//playerが選択した答え
 var playerAnswer;
 
 $(function () {
@@ -24,8 +26,11 @@ $(function () {
 
         $(".btn-nextQuiz").on("click", function() {
             // TODO チェックボックスの判定
-            console.log("test");
-            window.parent.nextButton();
+            if(correctAnswer == playerAnswer){
+                window.parent.nextButton(1,0);
+            }else{
+                window.parent.nextButton(0,1);      
+            }
         });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getAnswerDataHandler, "json");

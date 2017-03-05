@@ -4,7 +4,7 @@ var quizList;
 // 現在のクイズ番号
 var quizIndex = 0;
 // 現在表示している問題の正解の番号
-var ansIndex = -1;
+var ansIndex;
 
 $(function () {
     // HTTP GET Parameter 取得
@@ -17,6 +17,11 @@ $(function () {
     
     // 表示したい問題番号
     var index = parseInt(arg["index"], 10);
+    var NOCA = parseInt(arg["NOCA"], 10);
+    var NNOCA = parseInt(arg["NNOCA"], 10);
+    
+    console.log("正解数: " + NOCA);
+    console.log("不正解数: " + NNOCA);
 
     var getQuizDataHandler = function(data) {
         quizList = data.quizList;
@@ -31,7 +36,11 @@ $(function () {
 		            counter += answers[i].value;
 	            }
             }
-            location.href = "./../page/answer.html?" + $.param({index: index, ansIndex: ansIndex+1, counter: counter});
+            if(counter != ""){
+                location.href = "./../page/answer.html?" + $.param({index: index, ansIndex: ansIndex+1, counter: counter});
+            }else{
+                alert("答えを選んでね");
+            }
         });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getQuizDataHandler, "json");
@@ -44,9 +53,9 @@ $(function () {
  */
 function setQuizData(index) {
     if (index > quizList.length-1) {
+        window.parent.EndScreen(NOCA,NNOCA);
         return false;
     }
-
     var quizData = quizList[index];
     setQuizInfo(index, quizData.desc);
     setAnsList(quizData.ansList);

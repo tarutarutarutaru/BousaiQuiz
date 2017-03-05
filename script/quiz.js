@@ -24,7 +24,17 @@ $(function () {
 
         $(".btn-next").on("click", function() {
             // TODO チェックボックスの判定
-            location.href = "./../page/answer.html";
+            var answers = document.getElementsByName("answers");
+            playerAnswer = [];
+            var counter = 0;
+            for( var i=0,l=answers.length; l>i; i++ ) {
+	            if( answers[i].checked ) {
+		            playerAnswer[counter] = answers[i].value ;
+                    counter++;
+	            }
+            }
+            console.log(playerAnswer);
+            location.href = "./../page/answer.html?" + $.param({index: index, ansIndex: ansIndex, playerAnswer: playerAnswer});
         });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getQuizDataHandler, "json");
@@ -85,7 +95,7 @@ function setAnsList(ansList) {
             "<div class='col-md-6'>" +
             "<div class='checkbox ans-0'>" +
             "<label>" +
-            "<input type='checkbox'/>" + ansObj.text +
+            "<input type='checkbox' name='answers' value = "+i+" />" + ansObj.text +
             "</label>" +
             "</div>" +
             "</div>"

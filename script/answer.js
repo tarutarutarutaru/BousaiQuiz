@@ -1,5 +1,5 @@
 // クイズデータリスト
-var answerList;
+var answerDesc;
 
 $(function () {
     // HTTP GET Parameter 取得
@@ -12,11 +12,12 @@ $(function () {
     
     // 表示したい問題番号
     var index = parseInt(arg["index"], 10);
-
+    var ansIndex = parseInt(arg["ansIndex"],10);
     var getAnswerDataHandler = function(data) {
-        answerList = data.answerList;
+        answerDesc = data.quizList.map(function(quizData) {
+            return quizData.ansDesc;
+        })
         setAnswerData(index);
-        console.log("test");
 
         $(".btn-nextQuiz").on("click", function() {
             // TODO チェックボックスの判定
@@ -24,20 +25,19 @@ $(function () {
             window.parent.nextButton();
         });
     };
-    $.get("./../database/answer.json", { ts: new Date().getTime() }, getAnswerDataHandler, "json");
+    $.get("./../database/quiz.json", { ts: new Date().getTime() }, getAnswerDataHandler, "json");
 });
 
 function setAnswerData(index) {
-    if (index > ansewrList.length-1) {
+    if (index > answerDesc.length - 1) {
         return false;
     }
 
-    var answerData = answerList[index];
-    console.log(answerData.desc);
-    setAnswerInfo(answerData.desc);
+    setAnswerInfo(answerDesc[index]);
     return true;
 }
+
 function setAnswerInfo(desc) {
-    console.log("test");
+    
     $(".answer-desc").html(desc);
 }

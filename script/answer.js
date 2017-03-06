@@ -1,9 +1,5 @@
 // クイズデータリスト
 var answerDesc;
-//正しい答え
-var correctAnswer;
-//playerが選択した答え
-var playerAnswer;
 
 $(function () {
     // HTTP GET Parameter 取得
@@ -16,8 +12,7 @@ $(function () {
     
     // 表示したい問題番号
     var index = parseInt(arg["index"], 10);
-    correctAnswer = parseInt(arg["ansIndex"],10);
-    playerAnswer = parseInt(arg["counter"],10);
+    var ansIndex = parseInt(arg["ansIndex"],10);
     var getAnswerDataHandler = function(data) {
         answerDesc = data.quizList.map(function(quizData) {
             return quizData.ansDesc;
@@ -26,11 +21,8 @@ $(function () {
 
         $(".btn-nextQuiz").on("click", function() {
             // TODO チェックボックスの判定
-            if(correctAnswer == playerAnswer){
-                window.parent.nextButton(1,0);
-            }else{
-                window.parent.nextButton(0,1);      
-            }
+            console.log("test");
+            window.parent.nextButton();
         });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getAnswerDataHandler, "json");
@@ -46,10 +38,6 @@ function setAnswerData(index) {
 }
 
 function setAnswerInfo(desc) {
-    if(correctAnswer == playerAnswer){
-        $(".answer-title").html("正解");
-    }else{
-        $(".answer-title").html("不正解");
-    }
+    
     $(".answer-desc").html(desc);
 }

@@ -1,5 +1,10 @@
 // クイズデータリスト
 var answerDesc;
+<<<<<<< HEAD
+=======
+var correctAnswer;
+var playerAnswer;
+>>>>>>> 9e327db670cb8e0dc1c74495d5473dc93570b628
 
 $(function () {
     // HTTP GET Parameter 取得

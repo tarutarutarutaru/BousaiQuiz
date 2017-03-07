@@ -1,7 +1,7 @@
 // クイズデータリスト
 var answerDesc;
-var correctAnswer;
-var playerAnswer;
+var correctAnswer; //正しい答え
+var playerAnswer;  //playerの洗濯した答え
 
 $(function () {
     // HTTP GET Parameter 取得
@@ -25,17 +25,18 @@ $(function () {
         $(".btn-nextQuiz").on("click", function() {
             // TODO チェックボックスの判定
             console.log("test");
-            window.parent.nextButton();
+             if (index > answerDesc.length - 2) {
+                 window.parent.drawEndScreen();
+                return;
+             }else{
+                 window.parent.nextButton();
+             }
         });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getAnswerDataHandler, "json");
 });
 
 function setAnswerData(index) {
-    if (index > answerDesc.length - 1) {
-        return false;
-    }
-
     setAnswerInfo(answerDesc[index]);
     return true;
 }
@@ -43,8 +44,10 @@ function setAnswerData(index) {
 function setAnswerInfo(desc) {
     if(correctAnswer == playerAnswer){
         $(".answer-title").html("正解");
+       window.parent.NOCA++;
     }else{
         $(".answer-title").html("不正解");
+        window.parent.NNOCA++;
     }
     $(".answer-desc").html(desc);
 }

@@ -1,3 +1,9 @@
 .end-title {
+    color: red;
+    font-size: 100px;
+}
 
+.result {
+    color: red;
+    font-size: 36px;
 }

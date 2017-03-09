@@ -6,10 +6,10 @@
     font-size: 50px;
 }
 
-.select-ans {
-    
+.ans-holder {
+    font-size: 20px;
 }
 
 .quiz-desc {
-    font-size: 20px;
+    font-size: 30px;
 }

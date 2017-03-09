@@ -11,9 +11,9 @@
     var NNOCA = parseInt(arg["NNOCA"],10);
     var CAR = Math.round((NOCA/(NOCA+NNOCA))*100);
         $(".end-title").text("結果発表");
-        $(".NOCA").html("正解数:"+NOCA);
-        $(".NNOCA").html("不正解数:"+NNOCA);
-        $(".CAR").html("正解率:"+CAR+"％");
+        $(".NOCA").html("正解(せいかい)したかず:"+NOCA);
+        $(".NNOCA").html("間違(まちが)ったかず:"+NNOCA);
+        $(".CAR").html("点数(てんすう):"+CAR+"点");
 
     $(".btn-end").on("click", function() {
         location.href = "./../index.html";

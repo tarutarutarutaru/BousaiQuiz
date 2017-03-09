@@ -44,9 +44,11 @@ function setAnswerData(index) {
 function setAnswerInfo(desc) {
     if(correctAnswer == playerAnswer){
         $(".answer-title").html("正解");
+        document.getElementById("ca").play();
        window.parent.NOCA++;
     }else{
         $(".answer-title").html("不正解");
+        document.getElementById("nca").play();
         window.parent.NNOCA++;
     }
     $(".answer-desc").html(desc);

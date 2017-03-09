@@ -98,4 +98,5 @@ function setAnsList(ansList) {
             "</div>"
         );
     }
+    document.getElementById("Questions").play();
 }

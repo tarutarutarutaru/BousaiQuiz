@@ -3,7 +3,18 @@
     font-size: 100px;
 }
 
-.result {
+.accuracyRate {
+    color: green;
+    font-size: 36px;
+}
+.CorrectAnswer {
     color: red;
     font-size: 36px;
+}
+.IncorrectAnswer{
+    color:blue;
+    font-size: 36px;
+}
+*{
+    text-align: center;
 }

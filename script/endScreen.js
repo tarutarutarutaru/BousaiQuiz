@@ -14,4 +14,8 @@
         $(".NOCA").html("正解数:"+NOCA);
         $(".NNOCA").html("不正解数:"+NNOCA);
         $(".CAR").html("正解率:"+CAR+"％");
+
+    $(".btn-end").on("click", function() {
+        location.href = "./../index.html";
+    });
  });

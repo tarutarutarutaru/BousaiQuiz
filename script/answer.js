@@ -1,7 +1,7 @@
 // クイズデータリスト
 var answerDesc;
 var correctAnswer; //正しい答え
-var playerAnswer;  //playerの洗濯した答え
+var playerAnswer;  //playerの選択した答え
 
 $(function () {
     // HTTP GET Parameter 取得
@@ -43,11 +43,11 @@ function setAnswerData(index) {
 
 function setAnswerInfo(desc) {
     if(correctAnswer == playerAnswer){
-        $(".answer-title").html("正解");
+        $(".answer-title").html("正解(せいかい)");
         document.getElementById("ca").play();
        window.parent.NOCA++;
     }else{
-        $(".answer-title").html("不正解");
+        $(".answer-title").html("不正解(ふせいかい)");
         document.getElementById("nca").play();
         window.parent.NNOCA++;
     }

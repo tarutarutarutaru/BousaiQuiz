@@ -4,7 +4,7 @@ var quizList;
 // 現在のクイズ番号
 var quizIndex = 0;
 // 現在表示している問題の正解の番号
-var ansIndex = -1;
+var ansIndex = "";
 
 $(function () {
     // HTTP GET Parameter 取得
@@ -29,9 +29,10 @@ $(function () {
             for( var i=0,l=answers.length; l>i; i++ ) {
 	            if( answers[i].checked ) {
 		            counter += answers[i].value;
+                    console.log(counter);
 	            }
             }
-            location.href = "./../page/answer.html?" + $.param({index: index, ansIndex: ansIndex+1, counter: counter});
+            location.href = "./../page/answer.html?" + $.param({index: index, ansIndex: ansIndex, counter: counter});
         });
     };
     $.get("./../database/quiz.json", { ts: new Date().getTime() }, getQuizDataHandler, "json");
@@ -76,7 +77,7 @@ function setAnsList(ansList) {
 
         // 正解の番号を記録
         if (ansObj.ans == true){
-            ansIndex = i;
+            ansIndex += i + 1;
         }
 
         // 横並びレイアウトを挿入
